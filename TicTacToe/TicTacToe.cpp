@@ -27,19 +27,23 @@ void Map()
 {
 	for (int i = 0; i < 3; i++)
 	{
+		
 		// Used to indent the tic tac toe table twards the center
 		std::cout << INDENT << INDENT << INDENT << INDENT << INDENT;
 		for (int j = 0; j < 3; j++)
 		{
+
 			// The tic tac toe table
 			cout << YELLOW << "[" << RESET_COLOR << GREEN << grid[i][j] << RESET_COLOR << YELLOW <<  "] "  << RESET_COLOR;
 		}
 		cout << endl;
 	}
+
 }
 
 void Input() 
 {
+	//Input number
 	int a;
 	std::cout << std::endl;
 	cout << INDENT << INDENT << YELLOW <<  "type the number to fill the bracket: " << RESET_COLOR;
@@ -85,6 +89,56 @@ void Player()
 		player = 'X';
 }
 
+char Win() 
+{
+	// Player 1 - X
+	if (grid[0][0] == 'X' &&  grid[0][1] == 'X' && grid[0][2] == 'X')
+		return 'X';
+
+	if (grid[1][0] == 'X' &&  grid[1][1] == 'X' && grid[1][2] == 'X')
+		return 'X';
+
+	if (grid[2][0] == 'X' &&  grid[2][1] == 'X' && grid[2][2] == 'X')
+		return 'X';
+
+	if (grid[0][0] == 'X' &&  grid[1][0] == 'X' && grid[2][0] == 'X')
+		return 'X';
+
+	if (grid[0][2] == 'X' &&  grid[1][2] == 'X' && grid[2][2] == 'X')
+		return 'X';
+
+	if (grid[0][0] == 'X' &&  grid[1][1] == 'X' && grid[2][2] == 'X')
+		return 'X';
+
+	if (grid[2][0] == 'X' &&  grid[1][1] == 'X' && grid[0][2] == 'X')
+		return 'X';
+
+	// Player 2 - O
+	if (grid[0][0] == 'O' &&  grid[0][1] == 'O' && grid[0][2] == 'O')
+		return 'O';
+
+	if (grid[1][0] == 'O' &&  grid[1][1] == 'O' && grid[1][2] == 'O')
+		return 'O';
+
+	if (grid[2][0] == 'O' &&  grid[2][1] == 'O' && grid[2][2] == 'O')
+		return 'O';
+
+	if (grid[0][0] == 'O' &&  grid[1][1] == 'O' && grid[2][1] == 'O')
+		return 'O';
+
+	if (grid[0][2] == 'O' &&  grid[1][2] == 'O' && grid[2][2] == 'O')
+		return 'O';
+
+	if (grid[0][0] == 'O' &&  grid[1][1] == 'O' && grid[2][2] == 'O')
+		return 'O';
+
+	if (grid[2][0] == 'O' &&  grid[1][1] == 'O' && grid[0][2] == 'O')
+		return 'O';
+
+	return '/';
+
+}
+
 bool enableVirtualTerminal() 
 {
 	// Set output mode to handle virtual terminal sequences
@@ -111,6 +165,8 @@ bool enableVirtualTerminal()
 
 int main()
 {
+	//If the colors for the text do not load
+	//Close the the program 
 	if (enableVirtualTerminal() == false) {
 		std::cout << "The virtual terminal processing mode could not be activated." << std::endl;
 		std::cout << "Press 'Enter' to exit." << std::endl;
@@ -118,10 +174,7 @@ int main()
 		return false;
 	}
 
-	
-
-
-
+		
 	//Title of the game
 	std::cout << TITLE << CYAN << "Welcome to TicTacToe v3" << RESET_COLOR << std::endl;
 
@@ -131,14 +184,26 @@ int main()
 	while (1)
 	{
 		Map();
-		Input();
+		Input();		
 		Player();
+		if (Win() == 'X') {
+			cout << "Player 1 Wins" << endl;
+			std::cout << "Press Enter to exit." << std::endl;
+			std::cin.get();
+			break;
+		}
+		else if (Win() == 'O') {
+			cout << "Player 2 Wins" << endl;
+			std::cout << "Press Enter to exit." << std::endl;
+			std::cin.get();
+			break;
+		}
+		
 	}
-
 	
 	std::cin.get();
-
-	return 0;
 	system("cls");
+	return 0;
+	
 }
 
