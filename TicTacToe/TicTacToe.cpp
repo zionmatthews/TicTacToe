@@ -21,6 +21,7 @@ const char* const WHITE = "\x1b[97m";
 const char* const RESET_COLOR = "\x1b[0m";
 
 char grid[3][3] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+char player = 'X';
 
 void Map()
 {
@@ -31,10 +32,57 @@ void Map()
 		for (int j = 0; j < 3; j++)
 		{
 			// The tic tac toe table
-			cout << YELLOW << grid[i][j] << "[ ]" << RESET_COLOR;
+			cout << YELLOW << "[" << RESET_COLOR << GREEN << grid[i][j] << RESET_COLOR << YELLOW <<  "] "  << RESET_COLOR;
 		}
 		cout << endl;
 	}
+}
+
+void Input() 
+{
+	int a;
+	std::cout << std::endl;
+	cout << INDENT << INDENT << YELLOW <<  "type the number to fill the bracket: " << RESET_COLOR;
+	cin >> a;
+
+	if (a == 1) {
+		grid[0][0] = player;
+	}
+	else if (a == 2) {
+		grid[0][1] = player;
+	}
+	else if (a == 3) {
+		grid[0][2] = player;
+	}
+	else if (a == 4) {
+		grid[1][0] = player;
+	}
+	else if (a == 5) {
+		grid[1][1] = player;
+	}
+	else if (a == 6) {
+		grid[1][2] = player;
+	}
+	else if (a == 7) {
+		grid[2][0] = player;
+	}
+	else if (a == 8) {
+		grid[2][1] = player;
+	}
+	else if (a == 9) {
+		grid[2][2] = player;
+	}
+
+	
+}
+
+void Player() 
+{
+	if (player == 'X') {
+		player = 'O';
+	}
+	else
+		player = 'X';
 }
 
 bool enableVirtualTerminal() 
@@ -80,8 +128,14 @@ int main()
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	Map();
+	while (1)
+	{
+		Map();
+		Input();
+		Player();
+	}
 
+	
 	std::cin.get();
 
 	return 0;
