@@ -200,7 +200,7 @@ char Win()
 	if (grid[2][0] == 'O' &&  grid[2][1] == 'O' && grid[2][2] == 'O')
 		return 'O';
 
-	if (grid[0][0] == 'O' &&  grid[1][1] == 'O' && grid[2][1] == 'O')
+	if (grid[0][1] == 'O' &&  grid[1][1] == 'O' && grid[2][1] == 'O')
 		return 'O';
 
 	if (grid[0][2] == 'O' &&  grid[1][2] == 'O' && grid[2][2] == 'O')
