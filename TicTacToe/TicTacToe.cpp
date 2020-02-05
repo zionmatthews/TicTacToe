@@ -178,7 +178,7 @@ char Win()
 	if (grid[2][0] == 'X' &&  grid[2][1] == 'X' && grid[2][2] == 'X')
 		return 'X';
 
-	if (grid[0][0] == 'X' &&  grid[1][0] == 'X' && grid[2][0] == 'X')
+	if (grid[0][0] == 'X' &&  grid[1][0] == 'X' && grid[2][0] == 'X')//
 		return 'X';
 
 	if (grid[0][2] == 'X' &&  grid[1][2] == 'X' && grid[2][2] == 'X')
